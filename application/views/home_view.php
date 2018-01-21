@@ -1,42 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Welcome to My First CodeIgniter Application</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
-</head>
-<body> 
+<?php $this->load->view('admin/gallery/header');?> 
 		<div class="container">
-			
-			<h1 align="center">INSERT DATA</h1>
-			<form method="post" action="<?php echo base_url()?>home/form_validation" enctype="multipart/form-data">
-				<div class="form-group">
-					<label>Name</label>
-					<input type="text" name="name" class="form-control">
-					<span class="text-danger"><?php echo form_error("name") ?></span>
-				</div>
-				<div class="form-group">
-					<label>Phone</label>
-					<input type="text" maxlength="11" name="phone" class="form-control">
-					<span class="text-danger"><?php echo form_error("phone") ?></span>
-				</div>
-				<div class="form-group">
-					<label>Adddress</label>
-					<input type="text" name="address" class="form-control">
-					<span class="text-danger"><?php echo form_error("address") ?></span>
-				</div>
-				<div class="form-group">
-					<label>Avata</label>
-					<input type="file" name="avata" class="form-control">
-				</div>
-				<div class="form-group">
-					<input type="submit" name="insert" value="INSERT" class="btn btn-success">
-				</div>
-			</form>
-		
+			<h1 align="center">Danh sách người dùng</h1>
 		    <div class="table-responsive">
 		      	<table class="table table-bordered">
 		      		<tr>
@@ -73,5 +38,4 @@
 		      	</table>
 		    </div>
 	    </div>
-</body>
-</html>
+<?php $this->load->view('admin/gallery/footer');?>
