@@ -9,12 +9,13 @@ class Home extends CI_Controller {
         $data["fetch_data"] = $this->home_model->fetch_data();
 
         $this->load->view("home_view", $data);
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper('form', 'url');
     }
 
     public function form_validation(){
         $this->load->library('form_validation');
         $this->form_validation->set_rules("name", "Name", 'required');
+        $this->form_validation->set_rules("pass", "Pass", 'required');
         $this->form_validation->set_rules("phone", "Phone", 'required');
         $this->form_validation->set_rules("address", "Address", 'required');
 
@@ -43,6 +44,7 @@ class Home extends CI_Controller {
             $data = array(
                 "name" =>$this->input->post("name"),
                 "phone" =>$this->input->post("phone"),
+                "pass" =>md5($this->input->post("pass")),
                 "address" =>$this->input->post("address"),
                 "avata" =>$image
             );
@@ -72,7 +74,14 @@ class Home extends CI_Controller {
         $this->load->model("home_model");
         $data["user_data"] = $this->home_model->fetch_single_data($users_id);
         $data["fetch_data"] = $this->home_model->fetch_data();
-        $this->load->view("update", $data);
+        $this->load->view("admin/pages/update", $data);
+    }
+    public function insert_data(){
+        $users_id = $this->uri->segment(3);
+        $this->load->model("home_model");
+        $data["user_data"] = $this->home_model->fetch_single_data($users_id);
+        $data["fetch_data"] = $this->home_model->fetch_data();
+        $this->load->view("admin/pages/insert", $data);
     }
 }
 ?>
